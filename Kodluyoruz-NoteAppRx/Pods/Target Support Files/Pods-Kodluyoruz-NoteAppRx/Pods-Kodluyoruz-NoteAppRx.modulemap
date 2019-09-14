@@ -1,0 +1,6 @@
+framework module Pods_Kodluyoruz_NoteAppRx {
+  umbrella header "Pods-Kodluyoruz-NoteAppRx-umbrella.h"
+
+  export *
+  module * { export * }
+}

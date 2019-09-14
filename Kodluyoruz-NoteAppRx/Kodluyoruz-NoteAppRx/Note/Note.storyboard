@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PW4-NK-00a">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notes-->
+        <scene sceneID="5Fs-p0-Rmr">
+            <objects>
+                <viewController id="bHr-FO-4BP" customClass="NoteVC" customModule="Kodluyoruz_NoteAppRx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6gi-IA-zLc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="as5-Vr-n6V" customClass="FSCalendar">
+                                <rect key="frame" x="16" y="104" width="382" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KyW-Un-ODQ"/>
+                                </constraints>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="KyW-Un-ODQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jhn-1U-pP1">
+                                <rect key="frame" x="0.0" y="320" width="414" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AfP-zG-URU" firstAttribute="bottom" secondItem="as5-Vr-n6V" secondAttribute="bottom" constant="16" id="0Zk-zt-28a"/>
+                            <constraint firstItem="Jhn-1U-pP1" firstAttribute="top" secondItem="as5-Vr-n6V" secondAttribute="bottom" constant="16" id="8WG-E5-2up"/>
+                            <constraint firstItem="as5-Vr-n6V" firstAttribute="top" secondItem="AfP-zG-URU" secondAttribute="top" constant="16" id="8cH-iq-9uW"/>
+                            <constraint firstItem="Jhn-1U-pP1" firstAttribute="leading" secondItem="AfP-zG-URU" secondAttribute="leading" id="8dk-R2-3VW"/>
+                            <constraint firstItem="Jhn-1U-pP1" firstAttribute="top" secondItem="AfP-zG-URU" secondAttribute="top" constant="8" id="EHn-df-DzI"/>
+                            <constraint firstItem="AfP-zG-URU" firstAttribute="trailing" secondItem="as5-Vr-n6V" secondAttribute="trailing" constant="16" id="NEz-8S-2tR"/>
+                            <constraint firstItem="as5-Vr-n6V" firstAttribute="top" secondItem="AfP-zG-URU" secondAttribute="top" constant="16" id="P0P-si-pUZ"/>
+                            <constraint firstItem="AfP-zG-URU" firstAttribute="trailing" secondItem="Jhn-1U-pP1" secondAttribute="trailing" id="Phh-Yx-T0J"/>
+                            <constraint firstItem="as5-Vr-n6V" firstAttribute="leading" secondItem="AfP-zG-URU" secondAttribute="leading" constant="16" id="TzU-aI-NNA"/>
+                            <constraint firstItem="AfP-zG-URU" firstAttribute="bottom" secondItem="Jhn-1U-pP1" secondAttribute="bottom" id="ZBA-72-7LI"/>
+                            <constraint firstItem="as5-Vr-n6V" firstAttribute="width" secondItem="6gi-IA-zLc" secondAttribute="width" multiplier="0.35" id="aLl-oe-MOb"/>
+                            <constraint firstItem="Jhn-1U-pP1" firstAttribute="leading" secondItem="as5-Vr-n6V" secondAttribute="trailing" constant="8" id="ge1-bi-ToJ"/>
+                            <constraint firstItem="AfP-zG-URU" firstAttribute="trailing" secondItem="Jhn-1U-pP1" secondAttribute="trailing" id="vSW-Lu-IFa"/>
+                            <constraint firstItem="AfP-zG-URU" firstAttribute="bottom" secondItem="Jhn-1U-pP1" secondAttribute="bottom" id="wat-Af-8JG"/>
+                            <constraint firstItem="as5-Vr-n6V" firstAttribute="leading" secondItem="AfP-zG-URU" secondAttribute="leading" constant="16" id="yCE-Ho-Gx7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AfP-zG-URU"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0Zk-zt-28a"/>
+                                <exclude reference="ZBA-72-7LI"/>
+                                <exclude reference="vSW-Lu-IFa"/>
+                                <exclude reference="8cH-iq-9uW"/>
+                                <exclude reference="TzU-aI-NNA"/>
+                                <exclude reference="aLl-oe-MOb"/>
+                                <exclude reference="EHn-df-DzI"/>
+                                <exclude reference="ge1-bi-ToJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="0Zk-zt-28a"/>
+                                <exclude reference="NEz-8S-2tR"/>
+                                <exclude reference="Phh-Yx-T0J"/>
+                                <include reference="ZBA-72-7LI"/>
+                                <include reference="vSW-Lu-IFa"/>
+                                <exclude reference="wat-Af-8JG"/>
+                                <include reference="8cH-iq-9uW"/>
+                                <exclude reference="P0P-si-pUZ"/>
+                                <include reference="TzU-aI-NNA"/>
+                                <include reference="aLl-oe-MOb"/>
+                                <exclude reference="yCE-Ho-Gx7"/>
+                                <exclude reference="8WG-E5-2up"/>
+                                <exclude reference="8dk-R2-3VW"/>
+                                <include reference="EHn-df-DzI"/>
+                                <include reference="ge1-bi-ToJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notes" id="kSO-ua-lrs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pSG-BK-owf">
+                            <connections>
+                                <action selector="handleAddButton:" destination="bHr-FO-4BP" id="PFz-Iw-Das"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="as5-Vr-n6V" id="x1A-g6-qEa"/>
+                        <outlet property="notesTV" destination="Jhn-1U-pP1" id="EyD-tC-sga"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrP-eU-B8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="519.64285714285711" y="-388.40579710144931"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mhl-Op-gq8">
+            <objects>
+                <navigationController id="PW4-NK-00a" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pBN-Zr-J9P">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bHr-FO-4BP" kind="relationship" relationship="rootViewController" id="Hg3-kq-ige"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEI-LX-eFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="-388"/>
+        </scene>
+    </scenes>
+</document>

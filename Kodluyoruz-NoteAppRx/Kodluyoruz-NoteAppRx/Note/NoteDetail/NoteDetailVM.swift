@@ -28,7 +28,6 @@ class NoteDetailVM {
         self.selectedDate = selectedDate
     }
     
-    
     func updateNote(note: Note, title: String, detail: String) {
         api.updateNote(note: note, title: title, detail: detail)
     }

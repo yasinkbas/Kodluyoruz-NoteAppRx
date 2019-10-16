@@ -13,6 +13,7 @@ class NoteVC: UIViewController {
     
     let viewModel = NoteVM()
     
+    //---------------------------- Outlets ----------------------------//
     @IBOutlet weak var calendar: FSCalendar! {
         didSet {
             self.calendar.delegate = self
@@ -29,19 +30,14 @@ class NoteVC: UIViewController {
         }
     }
     
-    
-
+    //---------------------------- View lifecycle ----------------------------//
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
-
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func handleAddButton(_ sender: UIBarButtonItem) {
-        let noteDetailVC = NoteDetailVC(viewModel: NoteDetailVM(selectedDate: viewModel.selectedDate.value))
-        self.navigationController?.pushViewController(noteDetailVC, animated: true)
+    func setUpView() {
+        bindViewModel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +45,13 @@ class NoteVC: UIViewController {
         self.viewModel.getNotesBySelectedDate()
     }
     
+    //---------------------------- Actions ----------------------------//
+    @IBAction func handleAddButton(_ sender: UIBarButtonItem) {
+        let noteDetailVC = NoteDetailVC(viewModel: NoteDetailVM(selectedDate: viewModel.selectedDate.value))
+        self.navigationController?.pushViewController(noteDetailVC, animated: true)
+    }
+    
+    //---------------------------- Class functions ----------------------------//
     func bindViewModel() {
         self.viewModel.notes.asObservable()
             .subscribe(onNext: { [weak self] notes in
@@ -66,28 +69,18 @@ class NoteVC: UIViewController {
                 self.notesTV.reloadData()
             }).disposed(by: viewModel.disposeBag)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
+//---------------------------- FSCalendar ----------------------------//
 extension NoteVC: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.viewModel.selectedDate.accept(date.string(dateFormat: .ddMMyyyy))
 
     }
-    
 }
 
+//---------------------------- TableView ----------------------------//
 extension NoteVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = viewModel.notes.value?.count else {
@@ -121,5 +114,4 @@ extension NoteVC: UITableViewDelegate, UITableViewDataSource {
         let noteDetailVC = NoteDetailVC(viewModel: NoteDetailVM(selectedNote: selectedNote, selectedDate: viewModel.selectedDate.value))
         self.navigationController?.pushViewController(noteDetailVC, animated: true)
     }
-    
 }

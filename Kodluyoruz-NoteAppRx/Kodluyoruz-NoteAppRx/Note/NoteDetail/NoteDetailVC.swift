@@ -14,22 +14,24 @@ class NoteDetailVC: UIViewController {
     
     var viewModel: NoteDetailVM!
     
+    //---------------------------- Outlets ----------------------------//
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextView: UITextView!
     
-    
-    
+    //---------------------------- View lifecycle ----------------------------//
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboard()
-        
-        bindViewModel()
-        
-        // Do any additional setup after loading the view.
+        setUpView()
     }
     
+    func setUpView() {
+        hideKeyboard()
+        bindViewModel()
+    }
+    
+    //---------------------------- Init ----------------------------//
     init(viewModel: NoteDetailVM) {
         super.init(nibName: String(describing: NoteDetailVC.self), bundle: nil)
         self.viewModel = viewModel
@@ -39,6 +41,7 @@ class NoteDetailVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //---------------------------- Actions ----------------------------//
     @IBAction func handleSaveButton(_ sender: Any) {
         guard let title = titleTextField.text else { return }
         guard let detail = detailTextView.text, detailTextView.text != NoteDetailVM.NoteDetailPlaceholder else { return }
@@ -52,6 +55,7 @@ class NoteDetailVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    //---------------------------- Class functions ----------------------------//
     func bindViewModel() {
         self.viewModel.selectedNote.asObservable()
             .subscribe(onNext: { [weak self] selectedNote in
@@ -82,6 +86,7 @@ class NoteDetailVC: UIViewController {
     
 }
 
+//---------------------------- TextField ----------------------------//
 extension NoteDetailVC: UITextViewDelegate, UITextFieldDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
